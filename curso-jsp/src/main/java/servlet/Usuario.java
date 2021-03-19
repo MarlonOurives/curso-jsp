@@ -22,6 +22,7 @@ public class Usuario extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
@@ -44,7 +45,8 @@ public class Usuario extends HttpServlet {
 
 		}
 	}
-
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
