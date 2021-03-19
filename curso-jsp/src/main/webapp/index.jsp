@@ -5,12 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/estilo.css">
+<link href="resources/css/index.css" rel="stylesheet"/>
 
 </head>
-<body>
-	<h2>Index</h2>	
-		
+<body>		
 	<div class="login-page">
 		<div class="form">
 			<form action="LoginServlet" method="post" class="login-form">
