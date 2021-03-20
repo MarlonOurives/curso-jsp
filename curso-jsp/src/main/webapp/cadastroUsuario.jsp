@@ -33,6 +33,13 @@
 							type="password" id="senha" name="senha" aria-label="senha"
 							value="${user.senha}" /></td>
 					</tr>
+					
+					<tr>
+						<td>Nome:</td>
+						<td><input autocomplete="off" class="field-long"
+							type="text" id="nome" name="nome" aria-label="nome"
+							value="${user.nome}" /></td>
+					</tr>
 
 					<tr>
 						<td></td>
@@ -51,7 +58,7 @@
         <tbody>
         <tr>
             <th scope="col">Login</th>
-            <th scope="col">Senha</th>
+            <th scope="col"> Nome</th>
             <th scope="col"> Editar</th>
             <th scope="col">Excluir</th>
         </tr>
@@ -60,8 +67,9 @@
                 <td class="color-td">
                     <c:out value=" ${user.login}"/>
                 </td>
+           
                 <td class="color-td">
-                    <c:out value=" ${user.senha}"/>
+                	<c:out value="${user.nome}"></c:out>
                 </td>
 
                 <td class="color-td">
