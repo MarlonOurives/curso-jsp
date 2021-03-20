@@ -65,11 +65,11 @@
                 </td>
 
                 <td class="color-td">
-                    <a href="salvarUsuario?acao=editar&user=${user.login}">Editar</a>
+                    <a href="salvarUsuario?acao=editar&user=${user.login}"><img alt="Editar" title="Editar" src="resources/img/editar.png" width="20px" height="20px"></a>
                 </td>
 
                 <td class="color-td">
-                    <a href="salvarUsuario?acao=delete&user=${user.login}">Excluir</a>
+                    <a href="salvarUsuario?acao=delete&user=${user.login}"><img alt="Excluir" title="Excluir" src="resources/img/excluir.jpeg" width="20px" height="20px"></a>
                 </td>
             </tr>
         </c:forEach>
