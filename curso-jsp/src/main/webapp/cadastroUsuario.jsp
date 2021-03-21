@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<form action="salvarUsuario" method="post">
+	<form action="salvarUsuario" method="post" id="formUser">
 		<ul class="form-style-1">
 			<li>
 				<table>
@@ -33,18 +33,23 @@
 							type="password" id="senha" name="senha" aria-label="senha"
 							value="${user.senha}" /></td>
 					</tr>
-					
+
 					<tr>
 						<td>Nome:</td>
-						<td><input autocomplete="off" class="field-long"
-							type="text" id="nome" name="nome" aria-label="nome"
-							value="${user.nome}" /></td>
+						<td><input autocomplete="off" class="field-long" type="text"
+							id="nome" name="nome" aria-label="nome" value="${user.nome}" /></td>
 					</tr>
 
 					<tr>
 						<td></td>
-						<td><input type="submit" id="submit" name="submit"
-							aria-label="Salvar" value="Salvar" /></td>
+						<td>
+							<input type="submit" id="submit" name="submit"
+							aria-label="Salvar" value="Salvar" /> 
+							<input type="submit"
+							id="cancelar" name="cancelar" aria-label="Cancelar"
+							value="cancelar"
+							onclick="document.getElementById('formUser').action = 'salvarUsuario?acao=reset'" />
+						</td>
 					</tr>
 				</table>
 			</li>
@@ -52,38 +57,38 @@
 	</form>
 
 
-<div class="container">
+	<div class="container">
 		<table class="responsive-table">
-        <caption>Usuarios Cadastrados</caption>
-        <tbody>
-        <tr>
-            <th scope="col">Login</th>
-            <th scope="col"> Nome</th>
-            <th scope="col"> Editar</th>
-            <th scope="col">Excluir</th>
-        </tr>
-        <c:forEach items="${usuarios}" var="user">
-            <tr>
-                <td class="color-td">
-                    <c:out value=" ${user.login}"/>
-                </td>
-           
-                <td class="color-td">
-                	<c:out value="${user.nome}"></c:out>
-                </td>
+			<caption>Usuarios Cadastrados</caption>
+			<tbody>
+				<tr>
+					<th scope="col">Código</th>
+					<th scope="col">Login</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Editar</th>
+					<th scope="col">Excluir</th>
+				</tr>
+				<c:forEach items="${usuarios}" var="user">
+					<tr>
+						<td class="color-td"><c:out value="${user.id}" /></td>
+						<td class="color-td"><c:out value=" ${user.login}" /></td>
 
-                <td class="color-td">
-                    <a href="salvarUsuario?acao=editar&user=${user.login}"><img alt="Editar" title="Editar" src="resources/img/editar.png" width="20px" height="20px"></a>
-                </td>
+						<td class="color-td"><c:out value="${user.nome}"></c:out></td>
 
-                <td class="color-td">
-                    <a href="salvarUsuario?acao=delete&user=${user.login}"><img alt="Excluir" title="Excluir" src="resources/img/excluir.jpeg" width="20px" height="20px"></a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
+						<td class="color-td"><a
+							href="salvarUsuario?acao=editar&user=${user.id}"><img
+								alt="Editar" title="Editar" src="resources/img/editar.png"
+								width="20px" height="20px"></a></td>
 
-    </table>
+						<td class="color-td"><a
+							href="salvarUsuario?acao=delete&user=${user.id}"><img
+								alt="Excluir" title="Excluir" src="resources/img/excluir.jpeg"
+								width="20px" height="20px"></a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+
+		</table>
 	</div>
 </body>
 </html>

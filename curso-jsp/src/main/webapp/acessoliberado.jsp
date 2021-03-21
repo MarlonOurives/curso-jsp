@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h3>Acesso Liberado</h3>
-	<a href="cadastroUsuario.jsp"> Cadastro de Usuário </a>
+	<a href="salvarUsuario?acao=listartodos"> Cadastro de Usuário </a>
 </body>
 </html>
