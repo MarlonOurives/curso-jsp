@@ -11,11 +11,14 @@
 
 </head>
 <body>
+	<h3 style="color: red; text-align: center;">${msg}</h3>
+
 	<form action="salvarUsuario" method="post" id="formUser">
 		<ul class="form-style-1">
 			<li>
 				<table>
 					<tr>
+
 						<td>Codigo:</td>
 						<td><input autocomplete="off" class="field-long" type="text"
 							id="id" name="id" aria-label="id" value="${user.id}" /></td>
@@ -42,10 +45,8 @@
 
 					<tr>
 						<td></td>
-						<td>
-							<input type="submit" id="submit" name="submit"
-							aria-label="Salvar" value="Salvar" /> 
-							<input type="submit"
+						<td><input type="submit" id="submit" name="submit"
+							aria-label="Salvar" value="Salvar" /> <input type="submit"
 							id="cancelar" name="cancelar" aria-label="Cancelar"
 							value="cancelar"
 							onclick="document.getElementById('formUser').action = 'salvarUsuario?acao=reset'" />
