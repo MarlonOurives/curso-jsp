@@ -21,7 +21,7 @@ public class DaoUsuario {
 
 	public void salvarUsuario(BeanCursoJsp usuario) {
 		try {
-			String sql = "INSERT INTO USUARIO(LOGIN, SENHA, NOME) VALUES (?, ?, ?, ? )";
+			String sql = "INSERT INTO USUARIO(LOGIN, SENHA, NOME, TELEFONE) VALUES (?, ?, ?, ? )";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, usuario.getLogin());
 			preparedStatement.setString(2, usuario.getSenha());
