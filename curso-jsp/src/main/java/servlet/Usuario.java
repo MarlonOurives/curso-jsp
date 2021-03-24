@@ -78,18 +78,23 @@ public class Usuario extends HttpServlet {
 			beanCursoJsp.setTelefone(telefone);
 			try {
 
-				if(id == null || id.isEmpty() && !daoUsuario.validarLogin(login) ) {
+				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
 					request.setAttribute("msg", "Usuário já cadastrado");
 				}
-				
+
 				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
-					
+
 					daoUsuario.salvarUsuario(beanCursoJsp);
-					
+
 				} else if (id != null && !id.isEmpty()) {
-					
-					daoUsuario.atualizar(beanCursoJsp);
-					
+					if (!daoUsuario.validarLoginIpdate(login, id)) {
+						request.setAttribute("msg", "Login já existente");
+
+					} else {
+						daoUsuario.atualizar(beanCursoJsp);
+
+					}
+
 				}
 
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
