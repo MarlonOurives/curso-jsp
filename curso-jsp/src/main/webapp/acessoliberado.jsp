@@ -7,7 +7,11 @@
 <title>Acesso Liberado</title>
 </head>
 <body>
-	<h3>Acesso Liberado</h3>
-	<a href="salvarUsuario?acao=listartodos"> Cadastro de Usuário </a>
+	<h3>Tela Principal</h3>
+	<a href="salvarUsuario?acao=listartodos"> 
+		<img alt="Usuário" src="resources/img/usuario.png" 
+		title="Usuários"
+		width="80px" height="80px"> 
+	</a>
 </body>
 </html>
