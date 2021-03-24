@@ -42,6 +42,11 @@
 						<td><input autocomplete="off" class="field-long" type="text"
 							id="nome" name="nome" aria-label="nome" value="${user.nome}" /></td>
 					</tr>
+					<tr>
+						<td>Telefone:</td>
+						<td><input autocomplete="off" class="field-long" type="text" maxlength="20"
+							id="telefone" name="telefone" aria-label="telefone" value="${user.telefone}" /></td>
+					</tr>
 
 					<tr>
 						<td></td>
@@ -66,6 +71,7 @@
 					<th scope="col">Código</th>
 					<th scope="col">Login</th>
 					<th scope="col">Nome</th>
+					<th scope="col">Telefone</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Excluir</th>
 				</tr>
@@ -75,6 +81,7 @@
 						<td class="color-td"><c:out value=" ${user.login}" /></td>
 
 						<td class="color-td"><c:out value="${user.nome}"></c:out></td>
+						<td class="color-td"><c:out value="${user.telefone}"></c:out> </td>
 
 						<td class="color-td"><a
 							href="salvarUsuario?acao=editar&user=${user.id}"><img

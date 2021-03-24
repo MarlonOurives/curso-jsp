@@ -6,6 +6,8 @@ public class BeanCursoJsp {
 	private String senha;
 
 	private String nome;
+	private String telefone;
+	
 
 	public String getNome() {
 		return nome;
@@ -37,5 +39,13 @@ public class BeanCursoJsp {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 }
