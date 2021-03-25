@@ -71,15 +71,19 @@ public class Usuario extends HttpServlet {
 			String telefone = request.getParameter("telefone");
 
 			BeanCursoJsp beanCursoJsp = new BeanCursoJsp();
-			beanCursoJsp.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
+			beanCursoJsp.setId(!id.isEmpty() ? Long.parseLong(id) : null);
 			beanCursoJsp.setLogin(login);
 			beanCursoJsp.setSenha(senha);
 			beanCursoJsp.setNome(nome);
 			beanCursoJsp.setTelefone(telefone);
 			try {
-
+				
+				String msg = null;
+				boolean podeInserir = true;
+				
 				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
-					request.setAttribute("msg", "Usuário já cadastrado");
+					msg = "Usuário já cadastrado";
+					podeInserir = false;
 				}
 
 				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
@@ -88,13 +92,20 @@ public class Usuario extends HttpServlet {
 
 				} else if (id != null && !id.isEmpty()) {
 					if (!daoUsuario.validarLoginIpdate(login, id)) {
-						request.setAttribute("msg", "Login já existente");
+						msg = "Usuário já cadastrado";
+						podeInserir = false;
 
 					} else {
 						daoUsuario.atualizar(beanCursoJsp);
 
 					}
 
+				}
+				if(msg != null) {
+					request.setAttribute("msg", msg);
+				}
+				if(!podeInserir) {
+					request.setAttribute("user", beanCursoJsp);
 				}
 
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
