@@ -109,7 +109,7 @@ public class DaoUsuario {
 		}
 		return false;
 	}
-	public boolean validarLoginIpdate(String login, String id)throws Exception {
+	public boolean validarLoginUpdate(String login, String id)throws Exception {
 		String sql = "Select count(1) as qtd from usuario where login = '" + login + "' and id <> "+ id;
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);

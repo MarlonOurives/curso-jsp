@@ -29,19 +29,25 @@ public class Usuario extends HttpServlet {
 			String acao = request.getParameter("acao");
 			String user = request.getParameter("user");
 			if (acao.equalsIgnoreCase("delete")) {
+				
 				daoUsuario.delete(user);
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
 				view.forward(request, response);
+				
 			} else if (acao.equalsIgnoreCase("editar")) {
+				
 				BeanCursoJsp beanCursoJsp = daoUsuario.consultar(user);
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("user", beanCursoJsp);
 				view.forward(request, response);
+				
 			} else if (acao.equalsIgnoreCase("listartodos")) {
+				
 				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
 				view.forward(request, response);
+				
 			}
 
 		} catch (Exception e) {
@@ -91,7 +97,7 @@ public class Usuario extends HttpServlet {
 					daoUsuario.salvarUsuario(beanCursoJsp);
 
 				} else if (id != null && !id.isEmpty()) {
-					if (!daoUsuario.validarLoginIpdate(login, id)) {
+					if (!daoUsuario.validarLoginUpdate(login, id)) {
 						msg = "Usuário já cadastrado";
 						podeInserir = false;
 
