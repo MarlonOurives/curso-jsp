@@ -13,5 +13,11 @@
 		title="Usuários"
 		width="80px" height="80px"> 
 	</a>
+	<br/>
+	<a href="salvarProduto?acao=listartodos"> 
+		<img alt="Produto" src="resources/img/produto.png" 
+		title="Produtos"
+		width="80px" height="80px"> 
+	</a>
 </body>
 </html>
