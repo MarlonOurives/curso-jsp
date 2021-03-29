@@ -74,42 +74,50 @@ public class ProdutoServlet extends HttpServlet {
 		} else {
 			String id = request.getParameter("id");
 			String nome = request.getParameter("nome");
-			Double quantidade = Double.parseDouble(request.getParameter("quantidade"));
-			Double valor = Double.parseDouble(request.getParameter("valor"));
+			String quantidade = request.getParameter("quantidade");
+			String valor = request.getParameter("valor");
 
-			Produto produto = new Produto();
-			produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
-			produto.setNome(nome);
-			produto.setQuantidade(quantidade);
-			produto.setValor(valor);
 			try {
 
 				String msg = null;
 				boolean podeInserir = true;
 
-				if (id == null || id.isEmpty() && !daoProduto.validarNome(nome)) {
+				if (nome == null || nome.isEmpty()) {
+					msg = "Nome deve ser informado";
+					podeInserir = false;
+				} else if (quantidade == null || quantidade.isEmpty()) {
+					msg = "Quantidade deve ser informada";
+					podeInserir = false;
+				} else if (valor == null || valor.isEmpty()) {
+					msg = "Valor deve ser informado";
+					podeInserir = false;
+				} else if (id == null || id.isEmpty() && !daoProduto.validarNome(nome)) {
 					msg = "Produto já cadastrado";
 					podeInserir = false;
 				}
 
-				if (id == null || id.isEmpty() && daoProduto.validarNome(nome)) {
+				Produto produto = new Produto();
+				produto.setNome(nome);
+				produto.setId(!id.isEmpty() ? Long.parseLong(id) : null);
+
+				if (quantidade != null && !quantidade.isEmpty()) {
+					produto.setQuantidade(Double.parseDouble(quantidade));
+				}
+				if (valor != null && !valor.isEmpty()) {
+					produto.setValor(Double.parseDouble(valor));
+				}
+
+				if (msg != null) {
+					request.setAttribute("msg", msg);
+				} else if (id == null || id.isEmpty() && daoProduto.validarNome(nome) && podeInserir) {
 
 					daoProduto.salvarProduto(produto);
 
-				} else if (id != null && !id.isEmpty()) {
-					if (!daoProduto.validarProdutoUpdate(nome, id)) {
-						msg = "Produto já cadastrado";
-						podeInserir = false;
-
-					} else {
+				} else if (id != null && !id.isEmpty() && podeInserir) {					
 						daoProduto.atualizar(produto);
 
-					}
+				}
 
-				}
-				if (msg != null) {
-					request.setAttribute("msg", msg);
-				}
 				if (!podeInserir) {
 					request.setAttribute("prod", produto);
 				}
