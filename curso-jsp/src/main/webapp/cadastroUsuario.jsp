@@ -8,12 +8,12 @@
 <meta charset="UTF-8">
 <title>Cadastro de Usuário</title>
 <link rel="stylesheet" href="resources/css/cadastroUsuario.css">
-
 </head>
 <body>
 	<h3 style="color: red; text-align: center;">${msg}</h3>
 
-	<form action="salvarUsuario" method="post" id="formUser">
+	<form action="salvarUsuario" method="post" id="formUser"
+		onsubmit="return validarCampos() ? true : false;">
 		<ul class="form-style-1">
 			<li>
 				<table>
@@ -44,8 +44,9 @@
 					</tr>
 					<tr>
 						<td>Telefone:</td>
-						<td><input autocomplete="off" class="field-long" type="text" maxlength="20"
-							id="telefone" name="telefone" aria-label="telefone" value="${user.telefone}" /></td>
+						<td><input autocomplete="off" class="field-long" type="text"
+							maxlength="20" id="telefone" name="telefone"
+							aria-label="telefone" value="${user.telefone}" /></td>
 					</tr>
 
 					<tr>
@@ -81,7 +82,8 @@
 						<td class="color-td"><c:out value=" ${user.login}" /></td>
 
 						<td class="color-td"><c:out value="${user.nome}"></c:out></td>
-						<td class="color-td"><c:out value="${user.telefone}"></c:out> </td>
+						<td class="color-td"><c:out value="${user.telefone}"></c:out>
+						</td>
 
 						<td class="color-td"><a
 							href="salvarUsuario?acao=editar&user=${user.id}"><img
@@ -98,5 +100,24 @@
 
 		</table>
 	</div>
+	<script type="text/javascript">
+		function validarCampos() {
+			if (document.getElementById("login").value == '') {
+				alert('Informe o login');
+				return false;
+			} else if (document.getElementById("senha").value == '') {
+				alert('Informe a senha');
+				return false;
+			} else if (document.getElementById("nome").value == '') {
+				alert('Informe o nome');
+				return false;
+			} else if (document.getElementById("telefone").value == '') {
+				alert('Informe o telefone');
+				return false;
+			}
+			return true;
+		}
+	</script>
+
 </body>
 </html>
