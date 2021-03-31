@@ -8,8 +8,14 @@
 <meta charset="UTF-8">
 <title>Cadastro de Usuário</title>
 <link rel="stylesheet" href="resources/css/cadastroUsuario.css">
+<link rel="stylesheet" href="resources/css/padrao.css">
+
 </head>
 <body>
+<a href="index.jsp" class="sair">Sair</a>
+
+<a href="acessoliberado.jsp" class="inicio">Início</a>
+
 	<h3 style="color: red; text-align: center;">${msg}</h3>
 
 	<form action="salvarUsuario" method="post" id="formUser"

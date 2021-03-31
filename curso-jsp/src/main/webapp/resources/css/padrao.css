@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+a.sair {
+	background-color: #ff6556;
+	color: white;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+a.inicio {
+	background-color: #3e47ff;
+	color: white;
+	padding: 10px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}

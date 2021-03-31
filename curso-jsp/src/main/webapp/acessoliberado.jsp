@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="resources/css/padrao.css">
+
 <title>Acesso Liberado</title>
 </head>
 <body>
+<a href="index.jsp" class="sair">Sair</a>
 	<h3>Tela Principal</h3>
 	<a href="salvarUsuario?acao=listartodos"> 
 		<img alt="Usuário" src="resources/img/usuario.png" 
