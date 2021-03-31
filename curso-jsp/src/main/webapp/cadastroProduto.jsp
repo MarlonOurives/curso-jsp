@@ -13,7 +13,8 @@
 <body>
 	<h3 style="color: red; text-align: center;">${msg}</h3>
 
-	<form action="salvarProduto" method="post" id="formUser">
+	<form action="salvarProduto" method="post" id="formUser"
+		onsubmit="return validarCampos() ? true : false;">
 		<ul class="form-style-1">
 			<li>
 				<table>
@@ -21,7 +22,8 @@
 
 						<td>Codigo:</td>
 						<td><input autocomplete="off" class="field-long" type="text"
-							id="id" name="id" aria-label="id" value="${prod.id}" readonly="readonly"/></td>
+							id="id" name="id" aria-label="id" value="${prod.id}"
+							readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td>Nome:</td>
@@ -33,14 +35,15 @@
 					<tr>
 						<td>Quantidade:</td>
 						<td><input autocomplete="off" class="field-long"
-							type="number" id="quantidade" name="quantidade" aria-label="quantidade"
-							value="${prod.quantidade}" /></td>
+							type="number" id="quantidade" name="quantidade"
+							aria-label="quantidade" value="${prod.quantidade}" /></td>
 					</tr>
 
 					<tr>
 						<td>Valor:</td>
-						<td><input autocomplete="off" class="field-long" type="number"
-							id="valor" name="valor" aria-label="valor" value="${prod.valor}" /></td>
+						<td><input autocomplete="off" class="field-long"
+							type="number" id="valor" name="valor" aria-label="valor"
+							value="${prod.valor}" /></td>
 					</tr>
 
 					<tr>
@@ -76,7 +79,7 @@
 						<td class="color-td"><c:out value=" ${prod.nome}" /></td>
 
 						<td class="color-td"><c:out value="${prod.quantidade}"></c:out></td>
-						<td class="color-td"><c:out value="${prod.valor}"></c:out> </td>
+						<td class="color-td"><c:out value="${prod.valor}"></c:out></td>
 
 						<td class="color-td"><a
 							href="salvarProduto?acao=editar&prod=${prod.id}"><img
@@ -93,5 +96,20 @@
 
 		</table>
 	</div>
+	<script type="text/javascript">
+		function validarCampos() {
+			if (document.getElementById("nome").value == '') {
+				alert('Informe o nome');
+				return false;
+			} else if (document.getElementById("quantidade").value == '') {
+				alert('Informe a quantidade');
+				return false;
+			} else if (document.getElementById("valor").value == '') {
+				alert('Informe o valor');
+				return false;
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>
