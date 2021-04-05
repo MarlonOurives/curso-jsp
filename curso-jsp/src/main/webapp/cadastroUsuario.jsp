@@ -9,12 +9,18 @@
 <title>Cadastro de Usuário</title>
 <link rel="stylesheet" href="resources/css/cadastroUsuario.css">
 <link rel="stylesheet" href="resources/css/padrao.css">
+<!-- Adicionando JQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous">
+	
+</script>
 
 </head>
 <body>
-<a href="index.jsp" class="sair">Sair</a>
+	<a href="index.jsp" class="sair">Sair</a>
 
-<a href="acessoliberado.jsp" class="inicio">Início</a>
+	<a href="acessoliberado.jsp" class="inicio">Início</a>
 
 	<h3 style="color: red; text-align: center;">${msg}</h3>
 
@@ -54,7 +60,42 @@
 							maxlength="20" id="telefone" name="telefone"
 							aria-label="telefone" value="${user.telefone}" /></td>
 					</tr>
+					<tr>
+						<td>Cep:</td>
+						<td><input type="text" id="cep" name="cep"
+							onblur="consultaCep();" value="${user.cep}"></td>
 
+					</tr>
+					<tr>
+						<td>Rua:</td>
+						<td><input type="text" id="rua" name="rua"
+							value="${user.rua}"></td>
+
+					</tr>
+					<tr>
+						<td>Bairro:</td>
+						<td><input type="text" id="bairro" name="bairro"
+							value="${user.bairro}"></td>
+
+					</tr>
+					<tr>
+						<td>Cidade:</td>
+						<td><input type="text" id="cidade" name="cidade"
+							value="${user.cidade}"></td>
+
+					</tr>
+					<tr>
+						<td>Estado:</td>
+						<td><input type="text" id="estado" name="estado"
+							value="${user.estado}"></td>
+
+					</tr>
+					<tr>
+						<td>IBGE:</td>
+						<td><input type="text" id="ibge" name="ibge"
+							value="${user.ibge}"></td>
+
+					</tr>
 					<tr>
 						<td></td>
 						<td><input type="submit" id="submit" name="submit"
@@ -79,6 +120,13 @@
 					<th scope="col">Login</th>
 					<th scope="col">Nome</th>
 					<th scope="col">Telefone</th>
+					<th scope="col">Cep</th>
+					<th scope="col">Rua</th>
+					<th scope="col">Bairro</th>
+					<th scope="col">Cidade</th>
+					<th scope="col">Estado</th>
+					<th scope="col">IBGE</th>
+
 					<th scope="col">Editar</th>
 					<th scope="col">Excluir</th>
 				</tr>
@@ -89,6 +137,15 @@
 
 						<td class="color-td"><c:out value="${user.nome}"></c:out></td>
 						<td class="color-td"><c:out value="${user.telefone}"></c:out>
+						<td class="color-td"><c:out value="${user.cep}"></c:out>
+						<td class="color-td"><c:out value="${user.rua}"></c:out>
+						<td class="color-td"><c:out value="${user.bairro}"></c:out>
+						<td class="color-td"><c:out value="${user.cidade}"></c:out>
+						<td class="color-td"><c:out value="${user.estado}"></c:out>
+						<td class="color-td"><c:out value="${user.ibge}"></c:out>
+
+
+
 						</td>
 
 						<td class="color-td"><a
@@ -122,6 +179,32 @@
 				return false;
 			}
 			return true;
+		}
+
+		function consultaCep() {
+			var cep = $("#cep").val();
+
+			//Consulta o webservice viacep.com.br/
+			$.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?",
+					function(dados) {
+
+						if (!("erro" in dados)) {
+							//Atualiza os campos com os valores da consulta.
+							$("#rua").val(dados.logradouro);
+							$("#bairro").val(dados.bairro);
+							$("#cidade").val(dados.localidade);
+							$("#estado").val(dados.uf);
+							$("#ibge").val(dados.ibge);
+						} else {
+							$("#rua").val('');
+							$("#bairro").val('');
+							$("#cidade").val('');
+							$("#estado").val('');
+							$("#ibge").val('');
+							//CEP pesquisado não foi encontrado.
+							alert("CEP não encontrado.");
+						}
+					});
 		}
 	</script>
 
