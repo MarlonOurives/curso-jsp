@@ -34,12 +34,24 @@
 						<td>Codigo:</td>
 						<td><input autocomplete="off" class="field-long" type="text"
 							id="id" name="id" aria-label="id" value="${user.id}" /></td>
+
+						<td>IBGE:</td>
+						<td><input type="text" id="ibge" name="ibge"
+							value="${user.ibge}"></td>
+
+
+
+					</tr>
 					</tr>
 					<tr>
 						<td>Login:</td>
 						<td><input autocomplete="off" class="field-long" type="text"
 							id="login" name="login" aria-label="login" value="${user.login}" />
 						</td>
+						<td>Rua:</td>
+						<td><input type="text" id="rua" name="rua"
+							value="${user.rua}"></td>
+
 					</tr>
 
 					<tr>
@@ -47,55 +59,35 @@
 						<td><input autocomplete="off" class="field-long"
 							type="password" id="senha" name="senha" aria-label="senha"
 							value="${user.senha}" /></td>
+						<td>Bairro:</td>
+						<td><input type="text" id="bairro" name="bairro"
+							value="${user.bairro}"></td>
 					</tr>
 
 					<tr>
 						<td>Nome:</td>
 						<td><input autocomplete="off" class="field-long" type="text"
 							id="nome" name="nome" aria-label="nome" value="${user.nome}" /></td>
+						<td>Cidade:</td>
+						<td><input type="text" id="cidade" name="cidade"
+							value="${user.cidade}"></td>
 					</tr>
 					<tr>
 						<td>Telefone:</td>
 						<td><input autocomplete="off" class="field-long" type="text"
 							maxlength="20" id="telefone" name="telefone"
 							aria-label="telefone" value="${user.telefone}" /></td>
+						<td>Estado:</td>
+						<td><input type="text" id="estado" name="estado"
+							value="${user.estado}"></td>
 					</tr>
 					<tr>
 						<td>Cep:</td>
 						<td><input type="text" id="cep" name="cep"
 							onblur="consultaCep();" value="${user.cep}"></td>
-
 					</tr>
-					<tr>
-						<td>Rua:</td>
-						<td><input type="text" id="rua" name="rua"
-							value="${user.rua}"></td>
 
-					</tr>
-					<tr>
-						<td>Bairro:</td>
-						<td><input type="text" id="bairro" name="bairro"
-							value="${user.bairro}"></td>
 
-					</tr>
-					<tr>
-						<td>Cidade:</td>
-						<td><input type="text" id="cidade" name="cidade"
-							value="${user.cidade}"></td>
-
-					</tr>
-					<tr>
-						<td>Estado:</td>
-						<td><input type="text" id="estado" name="estado"
-							value="${user.estado}"></td>
-
-					</tr>
-					<tr>
-						<td>IBGE:</td>
-						<td><input type="text" id="ibge" name="ibge"
-							value="${user.ibge}"></td>
-
-					</tr>
 					<tr>
 						<td></td>
 						<td><input type="submit" id="submit" name="submit"
@@ -142,11 +134,7 @@
 						<td class="color-td"><c:out value="${user.bairro}"></c:out>
 						<td class="color-td"><c:out value="${user.cidade}"></c:out>
 						<td class="color-td"><c:out value="${user.estado}"></c:out>
-						<td class="color-td"><c:out value="${user.ibge}"></c:out>
-
-
-
-						</td>
+						<td class="color-td"><c:out value="${user.ibge}"></c:out></td>
 
 						<td class="color-td"><a
 							href="salvarUsuario?acao=editar&user=${user.id}"><img
