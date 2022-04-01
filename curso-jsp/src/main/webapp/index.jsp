@@ -7,9 +7,16 @@
 <title>Curso de JSP</title>
 </head>
 <body>
-	<h1>Hello</h1>
-	<%
-	out.print("Escrito pelo out");
-	%>
+	<h1>INDEX</h1>
+	<form action="receber-nome.jsp" method="get">
+	<label>Nome: </label>
+	<input name="nome">
+	<br/>
+	<label>Idade: </label>
+	<input name="idade">
+	<br/>
+	<button type="submit">Enviar</button>
+	</form>
+	
 </body>
 </html>
