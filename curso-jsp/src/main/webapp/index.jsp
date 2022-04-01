@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>INDEX</h1>
-	<form action="receber-nome.jsp" method="get">
+	<form action="receber-nome.jsp" method="post">
 	<label>Nome: </label>
 	<input name="nome">
 	<br/>
