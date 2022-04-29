@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,6 +18,7 @@ public class ServletUsuarioController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
 
 	}
 
@@ -38,8 +38,9 @@ public class ServletUsuarioController extends HttpServlet {
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("principal/usuario.jsp");
-		requestDispatcher.forward(request, response);
+		request.setAttribute("modelLogin", modelLogin);
+
+		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 	}
 
 }

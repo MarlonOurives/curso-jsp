@@ -47,29 +47,29 @@
 
 														<form class="form-material" action="<%= request.getContextPath() %>/ServletUsuarioController" method="post">
 															<div class="form-group form-default">
-																<input type="text" name="id" id="id" readonly="readonly"
+																<input type="text" name="id" id="id" readonly="readonly" value="${modelLogin.id}"
 																	class="form-control"> <span
 																	class="form-bar"></span> <label class="float-label">ID:</label>
 															</div>
 
 															<div class="form-group form-default">
-																<input type="text" name="nome" id="nome" autocomplete="off"
+																<input type="text" name="nome" id="nome" autocomplete="off"  value="${modelLogin.nome}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Nome:</label>
 															</div>
 
 															<div class="form-group form-default">
-																<input type="email" name="email" id="email" autocomplete="off"
+																<input type="email" name="email" id="email" autocomplete="off"  value="${modelLogin.email}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">E-mail:</label>
 															</div>
 															<div class="form-group form-default">
-																<input type="text" name="login" id="login" autocomplete="off"
+																<input type="text" name="login" id="login" autocomplete="off"  value="${modelLogin.login}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Login:</label>
 															</div>
 															<div class="form-group form-default">
-																<input type="password" name="senha" id="senha" autocomplete="off"
+																<input type="password" name="senha" id="senha" autocomplete="off"  value="${modelLogin.senha}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Senha:</label>
 															</div>
