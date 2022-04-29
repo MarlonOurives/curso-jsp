@@ -29,7 +29,6 @@
 						<!-- Page-header start -->
 
 						<jsp:include page="pageheader.jsp"></jsp:include>
-
 						<!-- Page-header end -->
 						<div class="pcoded-inner-content">
 							<!-- Main-body start -->
@@ -84,7 +83,8 @@
 												</div>
 											</div>
 										</div>
-
+										<span>${msg}</span> 
+									
 									</div>
 									<!-- Page-body end -->
 								</div>
