@@ -43,48 +43,56 @@
 												<div class="card">
 													<div class="card-block">
 														<h4 class="sub-title">Cadastro de Usuário</h4>
+														<form class="form-material"
+															action="<%=request.getContextPath()%>/ServletUsuarioController"
+															method="post" id="formUser">
 
-														<form class="form-material" action="<%= request.getContextPath() %>/ServletUsuarioController" method="post">
-															<div class="form-group form-default">
-																<input type="text" name="id" id="id" readonly="readonly" value="${modelLogin.id}"
-																	class="form-control"> <span
-																	class="form-bar"></span> <label class="float-label">ID:</label>
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="id" id="id" readonly="readonly"
+																	value="${modelLogin.id}" class="form-control">
+																<span class="form-bar"></span> <label
+																	class="float-label">ID:</label>
 															</div>
 
-															<div class="form-group form-default">
-																<input type="text" name="nome" id="nome" autocomplete="off"  value="${modelLogin.nome}"
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="nome" id="nome"
+																	autocomplete="off" value="${modelLogin.nome}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Nome:</label>
 															</div>
 
-															<div class="form-group form-default">
-																<input type="email" name="email" id="email" autocomplete="off"  value="${modelLogin.email}"
+															<div class="form-group form-default form-static-label">
+																<input type="email" name="email" id="email"
+																	autocomplete="off" value="${modelLogin.email}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">E-mail:</label>
 															</div>
-															<div class="form-group form-default">
-																<input type="text" name="login" id="login" autocomplete="off"  value="${modelLogin.login}"
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="login" id="login"
+																	autocomplete="off" value="${modelLogin.login}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Login:</label>
 															</div>
-															<div class="form-group form-default">
-																<input type="password" name="senha" id="senha" autocomplete="off"  value="${modelLogin.senha}"
+															<div class="form-group form-default form-static-label">
+																<input type="password" name="senha" id="senha"
+																	autocomplete="off" value="${modelLogin.senha}"
 																	class="form-control" required="required"> <span
 																	class="form-bar"></span> <label class="float-label">Senha:</label>
 															</div>
 
-															<button class="btn btn-success waves-effect waves-light">Novo</button>
-															<button class="btn btn-warning waves-effect waves-light">Editar</button>
+															<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Limpar Formulário</button>
+															<button class="btn btn-warning waves-effect waves-light">Salvar</button>
+
 															<button class="btn btn-danger waves-effect waves-light">Excluir</button>
-															
+
 														</form>
-														
+
 													</div>
 												</div>
 											</div>
 										</div>
-										<span>${msg}</span> 
-									
+										<span>${msg}</span>
+
 									</div>
 									<!-- Page-body end -->
 								</div>
@@ -99,6 +107,16 @@
 
 
 	<jsp:include page="javascriptfile.jsp"></jsp:include>
+	<script type="text/javascript">
+		function limparForm() {
+
+			var elementos = document.getElementById("formUser").elements;
+
+			for (p = 0; p < elementos.length; p++) {
+				elementos[p].value = '';
+			}
+		}
+	</script>
 </body>
 
 </html>
