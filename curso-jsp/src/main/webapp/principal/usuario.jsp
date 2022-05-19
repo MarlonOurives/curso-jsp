@@ -47,6 +47,8 @@
 															action="<%=request.getContextPath()%>/ServletUsuarioController"
 															method="post" id="formUser">
 
+															<input type="hidden" name="acao" id="acao" value="">
+
 															<div class="form-group form-default form-static-label">
 																<input type="text" name="id" id="id" readonly="readonly"
 																	value="${modelLogin.id}" class="form-control">
@@ -80,10 +82,14 @@
 																	class="form-bar"></span> <label class="float-label">Senha:</label>
 															</div>
 
-															<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Limpar Formulário</button>
+															<button type="button"
+																class="btn btn-primary waves-effect waves-light"
+																onclick="limparForm();">Limpar Formulário</button>
 															<button class="btn btn-warning waves-effect waves-light">Salvar</button>
 
-															<button class="btn btn-danger waves-effect waves-light">Excluir</button>
+															<button type="button"
+																class="btn btn-danger waves-effect waves-light"
+																onclick="criarDelete();">Excluir</button>
 
 														</form>
 
@@ -108,6 +114,14 @@
 
 	<jsp:include page="javascriptfile.jsp"></jsp:include>
 	<script type="text/javascript">
+	function criarDelete() {
+	    
+	    document.getElementById("formUser").method = 'get';
+	    document.getElementById("acao").value = 'deletar';
+	    document.getElementById("formUser").submit();
+	    
+	}
+
 		function limparForm() {
 
 			var elementos = document.getElementById("formUser").elements;
