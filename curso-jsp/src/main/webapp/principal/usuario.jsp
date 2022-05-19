@@ -115,11 +115,11 @@
 	<jsp:include page="javascriptfile.jsp"></jsp:include>
 	<script type="text/javascript">
 	function criarDelete() {
-	    
-	    document.getElementById("formUser").method = 'get';
-	    document.getElementById("acao").value = 'deletar';
-	    document.getElementById("formUser").submit();
-	    
+	    if(confirm("Deseja excluir o usuário?")){
+	    	document.getElementById("formUser").method = 'get';
+		    document.getElementById("acao").value = 'deletar';
+		    document.getElementById("formUser").submit();
+	    } 
 	}
 
 		function limparForm() {
