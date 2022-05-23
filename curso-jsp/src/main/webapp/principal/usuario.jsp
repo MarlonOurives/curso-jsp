@@ -82,15 +82,18 @@
 																	class="form-bar"></span> <label class="float-label">Senha:</label>
 															</div>
 
-															<button type="button"
-																class="btn btn-primary waves-effect waves-light"
-																onclick="limparForm();">Limpar Formulário</button>
-															<button class="btn btn-warning waves-effect waves-light">Salvar</button>
+
+															<button class="btn btn-primary waves-effect waves-light">Salvar</button>
 
 															<button type="button"
 																class="btn btn-danger waves-effect waves-light"
 																onclick="deleteComAjax();">Excluir</button>
-
+															<button type="button" class="btn btn-success"
+																data-toggle="modal" data-target="#modalUsuario">
+																Pesquisar Usuário</button>
+															<button type="button"
+																class="btn btn-secondary waves-effect waves-light"
+																onclick="limparForm();">Limpar Formulário</button>
 														</form>
 
 													</div>
@@ -113,6 +116,29 @@
 
 
 	<jsp:include page="javascriptfile.jsp"></jsp:include>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Fechar</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script type="text/javascript">
 		function deleteComAjax() {
 			if (confirm('Deseja excluir o usuário?')) {
