@@ -129,17 +129,59 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">...</div>
+				<div class="modal-body">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Nome"
+							id="nomeBusca" aria-label="Nome" aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<button class="btn btn-outline-info" type="button"
+								onclick="buscarUsuario();">Buscar</button>
+						</div>
+					</div>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Visualizar</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Fechar</button>
-					
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<script type="text/javascript">
+		function buscarUsuario() {
+			var nomeBusca = document.getElementById('nomeBusca').value;
+			if (nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
+				var urlAction = document.getElementById('formUser').action;
+
+				$.ajax({
+
+					method : "get",
+					url : urlAction,
+					data : "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
+					success : function(response) {
+					alert(response);
+					}
+
+				}).fail(
+						function(xhr, status, errorThrown) {
+							alert('Erro ao buscar usuário por nome: '
+									+ xhr.responseText);
+						});
+			}
+		}
+
 		function deleteComAjax() {
 			if (confirm('Deseja excluir o usuário?')) {
 
