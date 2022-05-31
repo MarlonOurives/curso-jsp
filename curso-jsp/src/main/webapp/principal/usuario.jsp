@@ -189,7 +189,9 @@
 																	+ json[p].id
 																	+ '</td> <td>'
 																	+ json[p].nome
-																	+ '</td> <td> <button type="button" class="btn btn-info">Ver Informações</button></td><tr>')
+																	+ '</td> <td> <button type="button" onclick="verEditar('
+																	+ json[p].id
+																	+ ')" class="btn btn-info">Ver Informações</button></td><tr>')
 										}
 										document
 												.getElementById('totalresultados').textContent = 'Resultados: '
@@ -202,6 +204,11 @@
 											+ xhr.responseText);
 								});
 			}
+		}
+
+		function verEditar(id) {
+			var urlAction = document.getElementById('formUser').action;
+			window.location.href = urlAction + '?acao=buscarEditar&id=' + id;
 		}
 
 		function deleteComAjax() {

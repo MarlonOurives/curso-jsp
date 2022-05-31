@@ -48,14 +48,21 @@ public class ServletUsuarioController extends HttpServlet {
 
 				response.getWriter().write("Excluido com sucesso!");
 			} else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarUserAjax")) {
-				
+
 				String nomeBusca = request.getParameter("nomeBusca");
 				List<ModelLogin> dadosJson = daoUsuarioRepository.consultarUsuarioList(nomeBusca);
 				ObjectMapper objectMapper = new ObjectMapper();
 				String json = objectMapper.writeValueAsString(dadosJson);
 				response.getWriter().write(json);
-				
-				
+
+			} else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
+				String id = request.getParameter("id");
+				ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioId(id);
+				request.setAttribute("msg", "UsuÃ¡rio em ediÃ§Ã£o");
+				request.setAttribute("modelLogin", modelLogin);
+
+				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+
 			} else {
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 
@@ -73,7 +80,7 @@ public class ServletUsuarioController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String msg = "Operação realizada com sucesso";
+			String msg = "Operaï¿½ï¿½o realizada com sucesso";
 			String id = request.getParameter("id");
 			String nome = request.getParameter("nome");
 			String email = request.getParameter("email");
@@ -88,7 +95,7 @@ public class ServletUsuarioController extends HttpServlet {
 			modelLogin.setSenha(senha);
 
 			if (daoUsuarioRepository.validarLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
-				msg = "Já existe usuário com mesmo login, informe outro login";
+				msg = "Jï¿½ existe usuï¿½rio com mesmo login, informe outro login";
 			} else {
 				if (modelLogin.isNovo()) {
 					msg = "Gravado com sucesso!";
