@@ -139,18 +139,23 @@
 						</div>
 					</div>
 				</div>
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">ID</th>
-							<th scope="col">Nome</th>
-							<th scope="col">Visualizar</th>
-						</tr>
-					</thead>
-					<tbody>
+				<div style="height: 300px; overflow: scroll;">
+					<span id="totalresultados"></span>
 
-					</tbody>
-				</table>
+					<table class="table" id="tabelaresultados">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Nome</th>
+								<th scope="col">Visualizar</th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Fechar</button>
@@ -165,20 +170,37 @@
 			if (nomeBusca != null && nomeBusca != '' && nomeBusca.trim() != '') {
 				var urlAction = document.getElementById('formUser').action;
 
-				$.ajax({
+				$
+						.ajax(
+								{
 
-					method : "get",
-					url : urlAction,
-					data : "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
-					success : function(response) {
-					alert(response);
-					}
+									method : "get",
+									url : urlAction,
+									data : "nomeBusca=" + nomeBusca
+											+ '&acao=buscarUserAjax',
+									success : function(response) {
+										var json = JSON.parse(response);
+										$('#tabelaresultados > tbody > tr')
+												.remove();
+										for (var p = 0; p < json.length; p++) {
+											$('#tabelaresultados > tbody')
+													.append(
+															'<tr><td>'
+																	+ json[p].id
+																	+ '</td> <td>'
+																	+ json[p].nome
+																	+ '</td> <td> <button type="button" class="btn btn-info">Ver Informações</button></td><tr>')
+										}
+										document
+												.getElementById('totalresultados').textContent = 'Resultados: '
+												+ json.length;
+									}
 
-				}).fail(
-						function(xhr, status, errorThrown) {
-							alert('Erro ao buscar usuário por nome: '
-									+ xhr.responseText);
-						});
+								}).fail(
+								function(xhr, status, errorThrown) {
+									alert('Erro ao buscar usuário por nome: '
+											+ xhr.responseText);
+								});
 			}
 		}
 

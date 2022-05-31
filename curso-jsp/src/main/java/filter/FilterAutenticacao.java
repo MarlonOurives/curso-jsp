@@ -15,7 +15,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-
+ 
 @WebFilter(urlPatterns = { "/principal/*" })
 public class FilterAutenticacao implements Filter {
 
@@ -41,7 +41,7 @@ public class FilterAutenticacao implements Filter {
 
 			String usuarioLogado = (String) httpSession.getAttribute("usuario");
 			String urlParaAutenticar = httpServletRequest.getServletPath();
-			/* Valida se está logado */
+			/* Valida se estï¿½ logado */
 			if (usuarioLogado == null && !urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin")) {
 				RequestDispatcher requestDispatcher = request
 						.getRequestDispatcher("/index.jsp?url=" + urlParaAutenticar);
